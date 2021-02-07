@@ -1,4 +1,4 @@
-FROM debian:latest AS chrony-ubuntu
+FROM debian:latest AS chrony-debian
 
 LABEL \
   maintainer="computeronix" \
