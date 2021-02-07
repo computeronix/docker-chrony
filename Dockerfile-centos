@@ -5,8 +5,7 @@ LABEL \
   website="https://aka.wf/ai6" \
   description="docker container with base image centos and updates, with wget, python3, modified systemctl, and chrony. chrony has default settings and auto-starts."
 
-RUN yum -y update && yum -y install wget python3 chrony && yum clean all
-
 ENV SYSTEMCTL="https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py"
 
-RUN wget $SYSTEMCTL -O /usr/bin/systemctl
+RUN yum -y update && yum -y install wget python3 chrony && yum clean all
+RUN wget $SYSTEMCTL -O /usr/bin/systemctl && systemctl enable --now chronyd
