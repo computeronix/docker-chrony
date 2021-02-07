@@ -5,7 +5,4 @@ LABEL \
   website="https://aka.wf/ai6" \
   description="docker container with base image ubuntu containing chrony with default settings"
 
-ENV DIR="/tmp"
-
-WORKDIR "${DIR}"
 RUN apt-get update && apt-get -y install chrony systemctl && rm -rf /var/lib/apt/lists/* && systemctl enable --now chrony
