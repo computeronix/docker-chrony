@@ -1,9 +1,9 @@
+FROM ubuntu:latest AS chrony-ubuntu
+
 LABEL \
   maintainer="computeronix" \
   website="https://aka.wf/ai6" \
   description="docker container with base image ubuntu containing chrony with default settings"
-
-FROM ubuntu:latest AS chrony-ubuntu
 
 ENV DIR="/tmp"
 
