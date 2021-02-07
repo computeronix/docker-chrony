@@ -8,4 +8,4 @@ LABEL \
 ENV DIR="/tmp"
 
 WORKDIR "${DIR}"
-RUN "apt-get update && apt-get -y install chrony systemctl && rm -rf /var/lib/apt/lists/* && systemctl enable --now chrony"
+RUN apt-get update && apt-get -y install chrony systemctl && rm -rf /var/lib/apt/lists/* && systemctl enable --now chrony
