@@ -1,0 +1,8 @@
+FROM debian:latest AS chrony-ubuntu
+
+LABEL \
+  maintainer="computeronix" \
+  website="https://aka.wf/ai6" \
+  description="docker container with base image ubuntu containing chrony with default settings"
+
+RUN apt-get update && apt-get -y install chrony systemd && rm -rf /var/lib/apt/lists/* && systemctl enable --now chrony
