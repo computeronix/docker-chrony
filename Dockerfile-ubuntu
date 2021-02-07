@@ -1,13 +1,5 @@
-FROM ubuntu:latest AS build-env
+FROM ubuntu:latest AS chrony-ubuntu
 ENV DIR="/tmp"
 WORKDIR "${DIR}"
 
-#adjust ntp time service
-#download gunbot release
-#extract
-#move to app folder
-#make gunbot extractable: chmod +x gunthy-linux
-
-
-#cleanup
-#RUN ["rm", "-rf", "${DIR}"]
+RUN apt-get update && apt-get -y install chrony systemctl && rm -rf /var/lib/apt/lists/* && systemctl enable --now chrony
