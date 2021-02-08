@@ -3,6 +3,13 @@ FROM ubuntu:latest AS chrony-ubuntu
 LABEL \
   maintainer="computeronix" \
   website="https://aka.wf/ai6" \
-  description="docker container with base image ubuntu containing chrony with default settings"
+  description="docker container with base image ubuntu containing chrony with default settings and starts on container launch"
 
-RUN apt-get update && apt-get -y install chrony systemctl && rm -rf /var/lib/apt/lists/* && systemctl enable --now chrony
+RUN apt-get update \
+  && apt-get -y install chrony systemctl \
+  && apt-get -y upgrade \
+  && apt-get clean \
+  && apt-get autoremove \
+  && rm -rf /var/lib/apt/lists/*
+
+CMD systemctl enable --now chrony
