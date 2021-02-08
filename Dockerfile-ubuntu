@@ -12,4 +12,4 @@ RUN apt-get update \
   && apt-get autoremove \
   && rm -rf /var/lib/apt/lists/*
 
-CMD systemctl enable --now chrony
+CMD systemctl enable --now chrony; /bin/sh -c bash
