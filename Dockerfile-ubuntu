@@ -2,15 +2,18 @@ ARG DISTRO="ubuntu"
 ARG VERSION="latest"
 FROM ${DISTRO}:${VERSION}
 ARG DISTRO
+ARG VERSION
 
 LABEL \
   maintainer="computeronix" \
   website="https://aka.wf/ai6" \
-  description="docker file ${DISTRO} - ${VERSION}"
+  description="docker file ${DISTRO} - ${VERSION}, install chrony and uses systemctl build to auto-run the process"
 
 RUN apt-get update \
-  && apt-get -y install chrony systemctl \
+  && apt-get -y install chrony \
   && rm -rf /var/lib/apt/lists/*
 
-CMD ["systemctl", "enable", "--now" "chrony"]
-#; /bin/sh -c bash
+CMD chronyd
+
+HEALTHCHECK --interval=60s --timeout=5s \
+  CMD chronyc tracking || exit 1
