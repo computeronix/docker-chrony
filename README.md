@@ -10,3 +10,4 @@ Supported Images
 
 Configuration:
 <br/>-Uses default configuration of chrony and enables chrony to start on system start
+<br/>-Requires --cap-add=SYS_TIME permissions (unless one will be runnings chrony without as a server node only)
