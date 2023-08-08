@@ -1,4 +1,4 @@
-FROM alpine:latest AS chrony-alpine
+FROM alpine:3.18.3 AS chrony-alpine
 
 LABEL \
   maintainer="computeronix" \
